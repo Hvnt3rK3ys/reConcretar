@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ReConcretar | Transformando Residuos de Construcción</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #0f0f10;
+      color: #f5f5f5;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    header, section {
+      width: 100%;
+    }
+
+    a { text-decoration: none; }
+
+    /* HERO */
+    .hero {
+      height: 100vh;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)),
+        url('https://images.unsplash.com/photo-1581091870622-9d3d6772e1d3?auto=format&fit=crop&w=1350&q=80') no-repeat center/cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
+      position: relative;
+    }
+    .hero h1 {
+      font-size: 4rem;
+      font-weight: 900;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+      animation: fadeInDown 1.2s ease-out forwards;
+      opacity: 0;
+    }
+    .hero p {
+      font-size: 1.4rem;
+      max-width: 800px;
+      opacity: 0.9;
+      animation: fadeInUp 1.5s ease-out forwards;
+      animation-delay: 0.6s;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 35px;
+      padding: 17px 40px;
+      font-size: 1.15rem;
+      font-weight: 700;
+      border-radius: 8px;
+      color: #0f0f10;
+      background: #ffae42;
+      transition: 0.3s ease;
+      animation: fadeInUp 1.8s ease-out forwards;
+      animation-delay: 1s;
+      opacity: 0;
+    }
+    .btn:hover {
+      background: #ffc56c;
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(255,174,66,0.5);
+    }
+
+    @keyframes fadeInDown {
+      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(-40px); }
+    }
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(40px); }
+    }
+
+    /* SECTION STYLES */
+    section {
+      padding: 90px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    section:nth-child(even) {
+      background: #121214;
+    }
+    h2 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      margin-bottom: 30px;
+      position: relative;
+      color: #ffae42;
+    }
+    h2::after {
+      content: "";
+      position: absolute;
+      width: 90px;
+      height: 6px;
+      background: #ffae42;
+      bottom: -12px;
+      left: 0;
+    }
+    p {
+      font-size: 1.25rem;
+      line-height: 1.7;
+      opacity: 0.9;
+      max-width: 900px;
+      margin-bottom: 20px;
+    }
+
+    .image-right, .image-left {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 40px;
+      align-content: center;
+    }
+    .image-right img, .image-left img {
+      flex: 0 0 48%;
+      max-width: 48%;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+      opacity: 0;
+      animation: fadeIn 1s ease-out forwards;
+      object-fit: cover;
+    }
+    .image-right img {
+      animation-delay: 0.4s;
+    }
+    .image-left img {
+      animation-delay: 0.4s;
+    }
+    .image-right .text, .image-left .text {
+      flex: 0 0 48%;
+      max-width: 48%;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* FEATURES GRID */
+    .features {
+      margin-top: 50px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+    .card {
+      background: #1b1b1d;
+      border: 1px solid #2a2a2d;
+      padding: 35px;
+      border-radius: 14px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 12px 30px rgba(255,174,66,0.2);
+      border-color: #ffae42;
+    }
+    .card h3 {
+      color: #ffae42;
+      margin-bottom: 15px;
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+    .card p {
+      font-size: 1rem;
+      line-height: 1.6;
+      opacity: 0.85;
+    }
+
+    /* VIDEO */
+    .video-container {
+      margin-top: 40px;
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.6);
+    }
+
+    /* COLOR GUIDE */
+    .color-guide {
+      margin-top: 50px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+      gap: 30px;
+    }
+    .color-box {
+      padding: 32px;
+      border-radius: 14px;
+      background: #1b1b1d;
+      border-left: 12px solid;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .color-box:hover {
+      transform: translateX(8px);
+      box-shadow: 0 10px 25px rgba(255,174,66,0.15);
+    }
+    .blue { border-color: #3d7ef0; }
+    .orange { border-color: #ff7b00; }
+    .white { border-color: #cccccc; }
+    .black { border-color: #444444; }
+    .color-box h3 {
+      margin-bottom: 10px;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #ffae42;
+    }
+    .color-box p {
+      font-size: 1rem;
+      opacity: 0.8;
+    }
+
+    /* CTA SECTION */
+    .cta {
+      background: #ffae42;
+      color: #0f0f10;
+      text-align: center;
+      padding: 80px 40px;
+      border-radius: 14px;
+      margin: 60px auto;
+      max-width: 1100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .cta h2 {
+      color: #0f0f10;
+    }
+    .cta p {
+      color: #0f0f10;
+      font-size: 1.3rem;
+      opacity: 0.95;
+      margin-bottom: 30px;
+      max-width: 900px;
+    }
+    .cta .btn {
+      color: #f5f5f5;
+      background: #0f0f10;
+    }
+    .cta .btn:hover {
+      color: #f5f5f5;
+      background: #222;
+    }
+
+    /* Responsive tweaks: stack columns on small screens */
+    @media (max-width: 880px) {
+      .image-right img, .image-left img,
+      .image-right .text, .image-left .text {
+        flex: 1 1 100%;
+        max-width: 100%;
+      }
+      .image-right, .image-left { gap: 20px; }
+      .cta { padding: 60px 20px; margin: 40px 16px; }
+      .hero h1 { font-size: 2.6rem; }
+      h2 { font-size: 2.2rem; }
+    }
+
+    footer {
+      text-align: center;
+      padding: 50px 20px;
+      background: #0b0b0c;
+      color: #888;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div>
+      <h1>ReConcretar</h1>
+      <p>Transformamos los residuos de construcción en valor real mediante automatización inteligente y visión computacional.</p>
+      <a href="#problema" class="btn">Ver el desafío</a>
+    </div>
+  </header>
+
+  <!-- PROBLEMA -->
+  <section id="problema">
+    <h2>El Problema que Ignoramos</h2>
+    <div class="image-right">
+      <div class="text">
+        <p>
+          Cada año, toneladas de escombros, ladrillos rotos, yeso y mezclas terminan en vertederos o zonas sin control.  
+          Los pequeños contratistas urbanos se enfrentan a sanciones, costos imprevistos y procesos complicados de gestión de residuos.
+        </p>
+        <p>
+          ¿Por qué? Porque no existe una solución accesible, automatizada y rentable que pueda integrarse al flujo de obra sin volverse un dolor de cabeza.
+        </p>
+      </div>
+      <img src="https://images.unsplash.com/photo-1636121156235-6bc6757e49ee?q=80&w=956&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Obra con escombros">
+    </div>
+  </section>
+
+  <!-- SOLUCIÓN -->
+  <section id="solucion">
+    <h2>Nuestra Solución</h2>
+    <div class="image-left">
+      <img src="https://pbs.twimg.com/media/G6XMlkhWgAAAD-o?format=jpg&name=small" alt="Clasificación de residuos">
+      <div class="text">
+        <p>
+          Presentamos un sistema que combina visión computacional + robot especializado para clasificar residuos de construcción <strong>en el centro de acopio o planta de recepción</strong>.  
+          No es solo hardware: es un flujo pensado para que el pequeño contratista se conecte sin complicaciones.  
+        </p>
+        <p>
+          El contratista entrega residuos, el sistema los automatiza, el operador o planta obtiene materiales reutilizables, y la alcaldía o entidad pública cumple con normativa y metas de economía circular.
+        </p>
+      </div>
+    </div>
+    <div class="features">
+      <div class="card">
+        <h3>Automatización robusta</h3>
+        <p>Clasificación precisa, menos error humano, mayor velocidad de procesamiento.</p>
+      </div>
+      <div class="card">
+        <h3>Costo mínimo para contratistas</h3>
+        <p>El contratista no compra robot: accede al servicio. Paga solo por residuo procesado o mensualidad baja.</p>
+      </div>
+      <div class="card">
+        <h3>Alianzas con gobiernos</h3>
+        <p>Ofrecemos cumplimiento normativo, datos trazables y programa de economía circular para entidades municipales.</p>
+      </div>
+    </div>
+    <div class="video-container">
+      <iframe src="https://youtu.be/mJMv2WdwiFM" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <!-- MERCADO GUBERNAMENTAL -->
+  <section id="mercado">
+    <h2>Una Oportunidad para Entes Gubernamentales</h2>
+    <p>
+      Las alcaldías, secretarías de medio ambiente y organismos de gestión de residuos están bajo presión para alcanzar metas de reciclaje, reducir vertederos ilegales y cumplir con normativas de economía circular.  
+      Nuestro sistema les proporciona una herramienta tangible, medible y escalable.
+    </p>
+    <div class="image-right">
+      <div class="text">
+        <p>
+          Imagine: un centro de clasificación automatizado gestionado junto a la municipalidad, recibiendo residuos de construcción, valorándolos como agregados reciclados, y reportando indicadores que muestran reducción de impacto ambiental.
+        </p>
+      </div>
+      <img src="https://pbs.twimg.com/media/G6XCUL4WUAAvUu5?format=jpg&name=small" alt="Gestión de residuos municipal">
+    </div>
+  </section>
+
+  <!-- GUÍA COLORES -->
+  <section id="clasificacion">
+    <h2>Guía de Clasificación por Colores</h2>
+    <p>Los materiales son detectados y separados en cuatro flujos, facilitando la operación y maximizando valor.</p>
+    <div class="color-guide">
+      <div class="color-box blue">
+        <h3>AZUL</h3>
+        <p>Concreto / cemento: muros, losas, bloques, mortero seco.</p>
+      </div>
+      <div class="color-box orange">
+        <h3>NARANJA</h3>
+        <p>Ladrillo / cerámica: ladrillos enteros/rotos, tejas, azulejos, sanitarios.</p>
+      </div>
+      <div class="color-box white">
+        <h3>BLANCO</h3>
+        <p>Yeso / cartón-yeso: placas, escayola, mezclas medianas.</p>
+      </div>
+      <div class="color-box black">
+        <h3>NEGRO</h3>
+        <p>No estructural / relleno: plásticos, madera no tratada, tierra, áridos mezclados.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPACTO Y BENEFICIOS -->
+  <section id="impacto">
+    <h2>Impacto &amp; Beneficios</h2>
+    <p>
+      Este proyecto genera valor en múltiples niveles:
+    </p>
+    <div class="features">
+      <div class="card">
+        <h3>Para contratistas</h3>
+        <p>Menor coste operativo, menos sanciones, proceso simplificado.</p>
+      </div>
+      <div class="card">
+        <h3>Para plantas y centros de acopio</h3>
+        <p>Materiales reutilizables, flujo eficiente, rentabilidad creciente.</p>
+      </div>
+      <div class="card">
+        <h3>Para gobiernos</h3>
+        <p>Indicadores de economía circular, cumplimiento normativo, mejor imagen pública.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta">
+    <h2>¿Listo para convertir residuos en ingresos?</h2>
+    <p>Ponte en contacto y demos juntos un primer paso hacia un sistema seguro, rentable y sostenible.</p>
+    <a href="mailto:contacto@reconcretar.com" class="btn">Solicitar demo</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>ReConcretar © 2025 — Innovación para la construcción sostenible</p>
+  </footer>
+
+</body>
+</html>
